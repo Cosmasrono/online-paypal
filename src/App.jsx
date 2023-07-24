@@ -1,46 +1,35 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import MovieList from '../components/MovieList';
-import MovieListHeading from '../components/MovieListHeading';
-import SearchBox from '../components/SearchBox';
-import AddToFavourites from '../components/AddToFavourites';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CheckoutForm from "./Components/Checkout";
+import "./index.css";
+import "./App.css";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import AuthRoute from "./Components/AuthRoute";
+import Home from "./pages/Home";
 
 function App() {
-  const [searchValue, setSearchValue] = useState('');
-  const [movies, setMovies] = useState([]);
-
-  const getMovieRequest = async () => {
-    const url = `http://www.omdbapi.com/?s=star wars&apikey=263d22d8`;
-
-    try {
-      const response = await fetch(url);
-      const responseJson = await response.json();
-
-      if (responseJson.Search) {
-        setMovies(responseJson.Search);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    getMovieRequest();
-  }, []);
-
   return (
-    <>
-      <div className=''>
-        <MovieListHeading heading='Movies' />
-        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
-      </div>
-      <div className='flex gap-11'>
-        <MovieList movies={movies} />
-        <div className='row'>
-          <MovieList movies={movies} favouriteComponent={AddToFavourites} />
+   
+      <>
+        <nav className="flex">
+          <img src="https://img.icons8.com/?size=1x&id=zCkt2fdFgcSM&format=png" alt="" />
+        </nav>
+        <div className="App items-center justify-center flex-col flex mt-4">
+          <h1 className="text-slate-900 text-3xl font-extrabold">Online PayPal Payment Gateway Integration</h1>
+          <p className="italic text-blue-700 font-bold">Move your money around the world with online PayPal</p>
         </div>
-      </div>
-    </>
+
+        <Routes>
+          <Route path="/" element={<CheckoutForm />} />
+          <Route element={<AuthRoute />}/>
+            <Route path="/" element={<Home />} />
+        
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </>
+     
   );
 }
 
