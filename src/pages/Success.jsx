@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { CLIENT_ID } from "../Config/Config";
+import SignOutPage from "../Components/SignOutPage";
 
 const products = [
   
@@ -131,7 +132,11 @@ const Checkout = () => {
   }, [success, orderID]);
 
   return (
+   <div>
+    <SignOutPage />
+     
     <PayPalScriptProvider options={{ "client-id": CLIENT_ID }}>
+   
       <div
         style={{
           display: "flex",
@@ -174,7 +179,7 @@ const Checkout = () => {
           </div>
         ))}
       </div>
-    </PayPalScriptProvider>
+    </PayPalScriptProvider></div>
   );
 };
 

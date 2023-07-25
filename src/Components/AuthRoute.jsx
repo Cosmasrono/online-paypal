@@ -1,4 +1,4 @@
-import { useAuth } from "../AuthProvider";
+/* import { useAuth } from "../AuthProvider";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 const AuthRoute = () => {
@@ -12,4 +12,4 @@ const AuthRoute = () => {
   );
 };
 
-export default AuthRoute;
+export default AuthRoute; */

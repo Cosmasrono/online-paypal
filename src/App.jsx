@@ -1,18 +1,16 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import CheckoutForm from "./Components/Checkout";
+import { Routes, Route } from "react-router-dom";
+import CheckoutForm from "./Components/SignOutPage";
 import "./index.css";
 import "./App.css";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import AuthRoute from "./Components/AuthRoute";
-import Home from "./pages/Home";
+ import Login from './pages/Login';
+import Success from './pages/Success'
 
 function App() {
   return (
    
       <>
-        <nav className="flex">
+        <nav className="flex mt-3 pt-2 pl-2">
           <img src="https://img.icons8.com/?size=1x&id=zCkt2fdFgcSM&format=png" alt="" />
         </nav>
         <div className="App items-center justify-center flex-col flex mt-4">
@@ -21,13 +19,19 @@ function App() {
         </div>
 
         <Routes>
-          <Route path="/" element={<CheckoutForm />} />
-          <Route element={<AuthRoute />}/>
-            <Route path="/" element={<Home />} />
+         
+           
+            <Route path="/" element={<Login />} />
+        <Route path="/success" element={<Success />} />
+         <Route path="/" element={<CheckoutForm />} />
         
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
         </Routes>
+        <footer>
+          <div className="flex items-center justify-center flex-col">
+            <p className="text-gray-500 text-sm">©cossi PayPal. All rights reserved.</p>
+            <p className="text-gray-500 text-sm">Privacy Legal Policy updates</p>
+          </div>
+        </footer>
       </>
      
   );
